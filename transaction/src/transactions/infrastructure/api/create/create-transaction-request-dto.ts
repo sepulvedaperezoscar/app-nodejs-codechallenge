@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsNumberString, IsString, isNumber } from "class-validator";
 
-export class CreateTransactionHttpDto {
+export class CreateTransactionRequestDto {
 
   @IsNotEmpty()
   @IsNumberString()

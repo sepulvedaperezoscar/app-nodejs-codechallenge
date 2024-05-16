@@ -3,4 +3,20 @@ export interface CreateTransactionDto {
     accountExternalIdCredit: string;
     tranferTypeId: number;
     value: number;
-  }
+}
+
+export interface ResponseTransactionDto {
+  transactionExternalId?: string;
+  transactionType?: TransactionType;
+  transactionStatus?: TransactionStatus;
+  value?: number;
+  createdAt?: Date;      
+}
+
+interface TransactionType {
+  name?: string;
+}
+
+interface TransactionStatus {
+  name?: string;
+}

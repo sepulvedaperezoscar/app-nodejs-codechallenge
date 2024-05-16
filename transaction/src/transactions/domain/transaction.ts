@@ -1,4 +1,4 @@
-import { TransactionStatus } from "@src/transactions/domain/transaction-status";
+import { TransactionStatus } from "./transaction-status.enum";
 
 export class Transaction {
 
@@ -15,6 +15,20 @@ export class Transaction {
         this.transactionExternalId = crypto.randomUUID();
         this.status = TransactionStatus.PENDING;
         this.createdAt = new Date();
+    }
+
+    toString(): string {
+        return JSON.stringify(
+            `Transaction: [
+                transactionExternalId: ${this.transactionExternalId},
+                accountExternalIdDebit: ${this.accountExternalIdDebit},
+                accountExternalIdCredit: ${this.accountExternalIdCredit},
+                tranferTypeId: ${this.tranferTypeId},
+                status: ${this.status},
+                value: ${this.value},
+                createdAt: ${this.createdAt}
+            ]`
+        );
     }
 
   }

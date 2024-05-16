@@ -1,10 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '@src/app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { NestLoggerService } from '@shared/logger/infrastructure/nestjs-logger-service';
-import { LoggerInterceptor } from '@shared/logger/infrastructure/logger.interceptor';
-import { Logger } from '@shared/logger/domain';
 import { ConfigService } from '@nestjs/config';
+
+import { AppModule } from './app.module';
+import { Logger } from '@shared/logger/domain';
+import { LoggerInterceptor } from '@shared/logger/infrastructure/logger.interceptor';
+import { NestLoggerService } from '@src/shared/logger/infrastructure/nestjs-logger.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });

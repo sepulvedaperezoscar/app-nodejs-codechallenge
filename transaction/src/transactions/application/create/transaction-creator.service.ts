@@ -1,18 +1,16 @@
-import { Transaction } from "@src/transactions/domain/transaction";
-import { TransactionRepository } from "@src/transactions/domain/transaction-repository";
-
-import { Injectable } from "@src/shared/dependency-injection/domain/injectable";
-
-import { CreateTransactionDto } from "./create-transaction-dto";
 import { Logger } from "@src/shared/logger/domain";
-import { TransactionResponseMapper } from "@src/transactions/application/create/transaction-response-mapper";
+import { Transaction } from "@src/transactions/domain/transaction";
+import { Injectable } from "@src/shared/dependency-injection/domain/injectable";
+import { TransactionRepository } from "@src/transactions/domain/transaction.repository";
+import { CreateTransactionDto } from "@src/transactions/application/create/transaction.dto";
+import { mapTransactionToResponse } from "@shared/util";
+
 
 @Injectable()
 export class TransactionCreator {
   constructor(
     private readonly logger: Logger,
-    private readonly transactionRepository: TransactionRepository,
-    private readonly transactionResponseMapper: TransactionResponseMapper
+    private readonly transactionRepository: TransactionRepository
   ) {}
 
   async run(createTransactionDto: CreateTransactionDto) {
@@ -23,6 +21,6 @@ export class TransactionCreator {
       createTransactionDto.value
     );
     const transactionCreated = await this.transactionRepository.create(transaction);
-    return this.transactionResponseMapper.map(transactionCreated);
+    return mapTransactionToResponse(transactionCreated);
   }
 }

@@ -6,17 +6,17 @@ export interface CreateTransactionDto {
 }
 
 export interface ResponseTransactionDto {
-  transactionExternalId?: string;
-  transactionType?: TransactionType;
-  transactionStatus?: TransactionStatus;
-  value?: number;
-  createdAt?: Date;      
+  transactionExternalId: string;
+  transactionType: TransactionType;
+  transactionStatus: TransactionStatus;
+  value: number;
+  createdAt: Date;      
 }
 
 interface TransactionType {
-  name?: string;
+  name: string;
 }
 
 interface TransactionStatus {
-  name?: string;
+  name: string;
 }

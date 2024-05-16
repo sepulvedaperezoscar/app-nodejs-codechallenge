@@ -2,10 +2,10 @@ import { Global, Module, Provider } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 
 import { Logger, LoggerLevel } from "@shared/logger/domain";
+import { LoggerInterceptor } from "@shared/logger/infrastructure/logger.interceptor";
+import { NestLoggerService } from "@src/shared/logger/infrastructure/nestjs-logger.service";
+import { PinoLoggerDependencies, PinoLogger } from "@src/shared/logger/infrastructure/pino-logger.service";
 
-import { LoggerInterceptor } from "./logger.interceptor";
-import { NestLoggerService } from "./nestjs-logger-service";
-import { PinoLogger, PinoLoggerDependencies } from "./pino-logger";
 
 const loggerProvider: Provider = {
   provide: Logger,

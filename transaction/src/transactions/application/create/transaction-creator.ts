@@ -1,14 +1,15 @@
 import { Transaction } from "@src/transactions/domain/transaction";
 import { TransactionRepository } from "@src/transactions/domain/transaction-repository";
 
-import { Injectable } from "@shared/di/domain/injectable";
+import { Injectable } from "@src/shared/dependency-injection/domain/injectable";
 
 import { CreateTransactionDto } from "./create-transaction-dto";
-import { TransactionStatus } from "@src/transactions/domain/transaction-status";
+import { Logger } from "@src/shared/logger/domain";
 
 @Injectable()
 export class TransactionCreator {
   constructor(
+    private readonly logger: Logger,
     private readonly transactionRepository: TransactionRepository,
   ) {}
 

@@ -13,7 +13,7 @@ import { TransactionRepository } from "@src/transactions/domain/transaction-repo
     {
       provide: TransactionRepository,
       useExisting: InMemoryTransactionRepository,
-    },
+    }
   ],
 })
 export class TransactionModule {}

@@ -3,11 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 
 import { LoggerModule } from '@src/shared/logger/infrastructure/logger.module';
 import { TransactionModule } from '@src/transactions/infrastructure/transaction.module';
-import { TransactionCreator } from '@src/transactions/application/create/transaction-creator.service';
+import { TransactionCreateService } from '@src/transactions/application/create/transaction-create.service';
 
 
-describe('TransactionCreator', () => { 
-  let service: TransactionCreator;
+describe('TransactionCreate', () => { 
+  let service: TransactionCreateService;
   let request = {
     "accountExternalIdCredit": "10274362536",
     "accountExternalIdDebit": "15245638263",
@@ -24,7 +24,7 @@ describe('TransactionCreator', () => {
       ],
     }).compile();
 
-    service = module.get<TransactionCreator>(TransactionCreator);
+    service = module.get<TransactionCreateService>(TransactionCreateService);
   });
 
   it('should be defined', () => { 

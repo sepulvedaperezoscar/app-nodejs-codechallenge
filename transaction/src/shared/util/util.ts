@@ -1,4 +1,4 @@
-import { ResponseTransactionDto } from "@src/transactions/application/create/transaction.dto";
+import { ResponseTransactionDto } from "@src/transactions/application/transaction.dto";
 import { Transaction } from "@src/transactions/domain/transaction";
 import { TransactionType } from "@src/transactions/domain/transaction-type.enum";
 

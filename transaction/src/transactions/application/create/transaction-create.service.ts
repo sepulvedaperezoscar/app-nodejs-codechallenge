@@ -1,15 +1,13 @@
-import { Logger } from "@src/shared/logger/domain";
 import { Transaction } from "@src/transactions/domain/transaction";
 import { Injectable } from "@src/shared/dependency-injection/domain/injectable";
 import { TransactionRepository } from "@src/transactions/domain/transaction.repository";
-import { CreateTransactionDto } from "@src/transactions/application/create/transaction.dto";
+import { CreateTransactionDto } from "@src/transactions/application/transaction.dto";
 import { mapTransactionToResponse } from "@shared/util";
 
 
 @Injectable()
-export class TransactionCreator {
+export class TransactionCreateService {
   constructor(
-    private readonly logger: Logger,
     private readonly transactionRepository: TransactionRepository
   ) {}
 

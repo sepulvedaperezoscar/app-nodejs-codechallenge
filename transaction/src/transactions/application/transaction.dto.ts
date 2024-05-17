@@ -1,3 +1,8 @@
+export interface UpdateStatusTransactionDto {    
+  transactionExternalId: string;
+  status: string;
+}
+
 export interface CreateTransactionDto {    
     accountExternalIdDebit: string;    
     accountExternalIdCredit: string;

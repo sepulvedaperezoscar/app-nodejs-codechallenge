@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 
 import { Logger } from "@shared/logger/domain";
 import { Transaction } from "@src/transactions/domain/transaction";
+import { TransactionStatus } from "@src/transactions/domain/transaction-status.enum";
 import { TransactionRepository } from "@src/transactions/domain/transaction.repository";
 
 
@@ -22,9 +23,19 @@ export class InMemoryTransactionRepository implements TransactionRepository {
       this.transactionIdToTransactionMap.set(transaction.transactionExternalId, transaction);
     }
   }
+  
   async create(transaction: Transaction): Promise<Transaction> {
-    this.logger.info("Transaction create", { attributes: { transaction: transaction }})
     this.transactionIdToTransactionMap.set(transaction.transactionExternalId, transaction)
+    return Promise.resolve(transaction);
+  }
+
+  updateStatus(id: string, status: string): Promise<Transaction | undefined> {
+    let transaction = this.transactionIdToTransactionMap.get(id);
+    
+    if (transaction) {
+      transaction.status = TransactionStatus.APPROVED;
+    }
+
     return Promise.resolve(transaction);
   }
 
